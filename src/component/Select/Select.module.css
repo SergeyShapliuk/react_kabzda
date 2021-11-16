@@ -8,5 +8,9 @@
 .items{
     position: absolute;
     padding: 5px;
-    border: 1px solid red;
+    border: 1px solid black;
+}
+.item.selected{
+    background-color: blue;
+    color: #e7fdd8;
 }
