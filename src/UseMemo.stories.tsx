@@ -44,3 +44,35 @@ export function Example1(){
     </>
 
 }
+
+const User=(props:{users:string[]})=>{
+
+    console.log("Users")
+    return <div>{
+        props.users.map((u, i) => <div>{u}</div>)
+    }</div>
+}
+const UserMemo=React.memo(User)
+
+export function HelpsToReactMemo(){
+    console.log("HelpsToReactMemo")
+    const [counter,setCounter]=useState(0)
+    const [users,setUsers]=useState(["Dimych","Valera","Artem"])
+
+    const newArray=useMemo(() => {
+        return users.filter(f=>f.toLowerCase().indexOf("a")>-1)
+    },[users]);
+
+    const addUser = () => {
+        const newUser=[...users,"Sveta"+new Date().getTime()]
+        setUsers(newUser)
+    }
+
+    return <>
+        <button onClick={()=>setCounter(counter+1)}>+</button>
+        <button onClick={()=>addUser()}>addUser</button>
+        {counter}
+        <UserMemo users={newArray}/>
+
+    </>
+}

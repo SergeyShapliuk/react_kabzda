@@ -19,7 +19,7 @@ return <div>{
     props.users.map((u, i) => <div>{u}</div>)
 }</div>
 }
-const Users=React.memo(User)
+const UserMemo=React.memo(User)
 
 export function Example(){
     const [counter,setCounter]=useState(0)
@@ -27,7 +27,7 @@ export function Example(){
     return <>
     <button onClick={()=>setCounter(counter+1)}>+</button>
         <Counter count={counter}/>
-        <Users users={users}/>
+        <UserMemo users={users}/>
 
     </>
 }
