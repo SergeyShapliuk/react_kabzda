@@ -38,14 +38,16 @@ export function SetTimeOutExample() {
     console.log('Example')
     useEffect(() => {
         console.log('useEffect')
-        setInterval(() => {
+        const intervalId = setInterval(() => {
             console.log('setTimeOut')
 
             document.title = count.toString()
         }, 1000)
+        return () => {
+            clearInterval(intervalId)
+        }
 
-
-    },[count])
+    }, [count])
 
 
     return <>
