@@ -1,4 +1,6 @@
 import React, {useEffect, useState} from "react";
+import {cleanup} from "@testing-library/react";
+import {log} from "util";
 
 
 export default {
@@ -56,4 +58,49 @@ export function SetTimeOutExample() {
         {/*<button onClick={()=>setFake(fake+1)}>fake</button>*/}
 
     </>
+}
+export function ResetEffectExample(){
+    const [count,setCount]=useState(1)
+
+    console.log('Component rendering with ' + count)
+
+    useEffect(()=>{
+       console.log('Effect occurred '+  count)
+    return ()=>{
+        console.log("Reset Effect"+count)
+
+    }
+
+    },[count])
+    const increase=()=>setCount(count+1)
+
+    return(
+        <>
+Hello counter:{count}<button onClick={increase}>+</button>
+        </>
+    )
+
+}
+export function KeyTrackerExample(){
+
+    const [text,setText]=useState('')
+    console.log('Component rendering with ' + text)
+const handler=(e:KeyboardEvent)=>{
+    console.log(e.key)
+    setText(state=> state+e.key)}
+    useEffect(()=> {
+        console.log('Effect '+text)
+window.addEventListener('keypress',handler
+)
+        return ()=>{
+            console.log('reset '+text)
+            window.removeEventListener('keypress',handler)
+        }
+    },[text])
+    return(
+        <>
+Typed text:{text}
+        </>
+    )
+
 }
