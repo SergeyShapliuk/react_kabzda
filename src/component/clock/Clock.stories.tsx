@@ -1,15 +1,23 @@
-import Clock from "./Clock";
+import AnalogClock from "./AnalogClock"
+import DigitalClock from "./DigitalClock";
+
 
 export default {
     title:'Clock',
-    component:Clock
+    component:AnalogClock||DigitalClock
 }
 
 
-export function BaseExample(){
+export function AnalogClockView(){
     return<>
-    <Clock/>
+    <AnalogClock/>
 
     </>
 
+}
+
+export function DigitalClockView(){
+    return<>
+<DigitalClock/>
+    </>
 }

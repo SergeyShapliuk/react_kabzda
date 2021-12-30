@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from "react";
+import React,{useEffect, useState} from "react";
 
 
 const getTwoDigital=(number:number)=>number<10?'0'+number:number
 
 
-function Clock(){
+function AnalogClock(){
     const [date,setDate]=useState(new Date())
 
     useEffect(()=>{
@@ -26,4 +26,4 @@ function Clock(){
         </div>
     )
 }
-export default Clock;
+export default AnalogClock;
